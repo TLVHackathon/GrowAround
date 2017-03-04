@@ -18,7 +18,9 @@ ADDED from /Users/olga/AndroidStudioProjects/GrowAround/app/src/main/AndroidMani
 MERGED from [com.android.support:appcompat-v7:23.4.0] /Users/olga/.android/build-cache/e9d8af0576aa23c41866628e89dd4e06c8886c4e/output/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:animated-vector-drawable:23.4.0] /Users/olga/.android/build-cache/27f69ae797f6db9728b76a248c212adc09e134d0/output/AndroidManifest.xml:7:5-20
 MERGED from [com.android.support:support-vector-drawable:23.4.0] /Users/olga/.android/build-cache/0b5304febfd255a4e5fdcaf40f09d36e2e91b58a/output/AndroidManifest.xml:7:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.0-alpha9] /Users/olga/.android/build-cache/30e540bde0285bd422755716ff1fe7c4bdbc9f1f/output/AndroidManifest.xml:9:5-20
 MERGED from [com.android.support:support-v4:23.4.0] /Users/olga/.android/build-cache/de51f0b409a520415b1c7d38f2b3ebe10f9a1008/output/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:cardview-v7:23.4.0] /Users/olga/.android/build-cache/d94a3bf7e2a9e9a60b2c6d58ef8de74caeb3e0c5/output/AndroidManifest.xml:22:5-20
 	android:label
 		ADDED from /Users/olga/AndroidStudioProjects/GrowAround/app/src/main/AndroidManifest.xml:8:9-41
 	android:supportsRtl
@@ -48,7 +50,10 @@ INJECTED from /Users/olga/AndroidStudioProjects/GrowAround/app/src/main/AndroidM
 MERGED from [com.android.support:appcompat-v7:23.4.0] /Users/olga/.android/build-cache/e9d8af0576aa23c41866628e89dd4e06c8886c4e/output/AndroidManifest.xml:21:5-23:78
 MERGED from [com.android.support:animated-vector-drawable:23.4.0] /Users/olga/.android/build-cache/27f69ae797f6db9728b76a248c212adc09e134d0/output/AndroidManifest.xml:5:5-44
 MERGED from [com.android.support:support-vector-drawable:23.4.0] /Users/olga/.android/build-cache/0b5304febfd255a4e5fdcaf40f09d36e2e91b58a/output/AndroidManifest.xml:5:5-43
+MERGED from [com.android.support.constraint:constraint-layout:1.0.0-alpha9] /Users/olga/.android/build-cache/30e540bde0285bd422755716ff1fe7c4bdbc9f1f/output/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:recyclerview-v7:23.4.0] /Users/olga/.android/build-cache/c18c27fa478fb25185f3a092eda26535f74d99bc/output/AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:support-v4:23.4.0] /Users/olga/.android/build-cache/de51f0b409a520415b1c7d38f2b3ebe10f9a1008/output/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:cardview-v7:23.4.0] /Users/olga/.android/build-cache/d94a3bf7e2a9e9a60b2c6d58ef8de74caeb3e0c5/output/AndroidManifest.xml:20:5-43
 	tools:overrideLibrary
 		ADDED from [com.android.support:appcompat-v7:23.4.0] /Users/olga/.android/build-cache/e9d8af0576aa23c41866628e89dd4e06c8886c4e/output/AndroidManifest.xml:23:9-75
 	android:targetSdkVersion

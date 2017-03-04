@@ -8,12 +8,12 @@
         "source": "/Users/olga/.android/build-cache/e9d8af0576aa23c41866628e89dd4e06c8886c4e/output/res/layout/notification_template_lines.xml"
     },
     {
-        "merged": "/Users/olga/AndroidStudioProjects/GrowAround/app/build/intermediates/res/merged/debug/layout/abc_action_bar_view_list_nav_layout.xml",
-        "source": "/Users/olga/.android/build-cache/e9d8af0576aa23c41866628e89dd4e06c8886c4e/output/res/layout/abc_action_bar_view_list_nav_layout.xml"
-    },
-    {
         "merged": "/Users/olga/AndroidStudioProjects/GrowAround/app/build/intermediates/res/merged/debug/layout/row_card_main.xml",
         "source": "/Users/olga/AndroidStudioProjects/GrowAround/app/src/main/res/layout/row_card_main.xml"
+    },
+    {
+        "merged": "/Users/olga/AndroidStudioProjects/GrowAround/app/build/intermediates/res/merged/debug/layout/abc_action_bar_view_list_nav_layout.xml",
+        "source": "/Users/olga/.android/build-cache/e9d8af0576aa23c41866628e89dd4e06c8886c4e/output/res/layout/abc_action_bar_view_list_nav_layout.xml"
     },
     {
         "merged": "/Users/olga/AndroidStudioProjects/GrowAround/app/build/intermediates/res/merged/debug/layout/abc_action_menu_item_layout.xml",
@@ -154,5 +154,9 @@
     {
         "merged": "/Users/olga/AndroidStudioProjects/GrowAround/app/build/intermediates/res/merged/debug/layout/abc_action_mode_bar.xml",
         "source": "/Users/olga/.android/build-cache/e9d8af0576aa23c41866628e89dd4e06c8886c4e/output/res/layout/abc_action_mode_bar.xml"
+    },
+    {
+        "merged": "/Users/olga/AndroidStudioProjects/GrowAround/app/build/intermediates/res/merged/debug/layout/row_card_property.xml",
+        "source": "/Users/olga/AndroidStudioProjects/GrowAround/app/src/main/res/layout/row_card_property.xml"
     }
 ]
