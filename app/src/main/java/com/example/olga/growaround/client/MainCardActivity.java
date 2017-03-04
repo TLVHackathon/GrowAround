@@ -31,7 +31,7 @@ public class MainCardActivity extends AppCompatActivity {
 
 
 
-    /*
+    /* test from old projects
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
