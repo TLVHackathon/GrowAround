@@ -8,8 +8,6 @@
 /captures
 .externalNativeBuild
 /.idea/vcs.xml
-
-
 *.apk
 *.ap_
 *.dex
