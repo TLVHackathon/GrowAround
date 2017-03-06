@@ -23,14 +23,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4"
-            android:id="@+id/button" />
+            android:id="@+id/loginBtn"
+            android:onClick="logInBtnClick"/>
 
         <Button
             android:text="Order By Location"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="6"
-            android:id="@+id/button2" />
+            android:id="@+id/locationBtn" />
     </LinearLayout>
 
     <LinearLayout

@@ -44,7 +44,7 @@ public class MainCardAdapter extends BaseAdapter{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        View row = null;
+        View row;
 
         if (convertView == null){
             row = LayoutInflater.from(context).inflate(R.layout.row_card_main, parent, false);
