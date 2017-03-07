@@ -2,18 +2,20 @@ package com.example.olga.growaround.client;
 
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
+
 
 import com.example.olga.growaround.R;
 import com.example.olga.growaround.manager.model.Card;
 import com.example.olga.growaround.viewcontroller.adapters.MainCardAdapter;
 import com.example.olga.growaround.viewcontroller.adapters.PropertyCardAdapter;
 import com.example.olga.growaround.viewcontroller.views.NoInternetFragment;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -47,20 +49,23 @@ public class MainCardActivity extends AppCompatActivity {
         testData();
 
 
-
         if (myListView != null) {
-
             myListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
             {
+                
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
                     Card details = (Card) mainCardAdapter.getItem(position);
-                    Intent intent = new Intent(MainCardActivity.this, UserCardActivity.class);
-                    intent.putExtra("details", details);
-                    startActivity(intent);
+
+                    Toast.makeText(getBaseContext(), details.getUserName(), Toast.LENGTH_LONG).show();
+
+                    //Intent intent = new Intent(MainCardActivity.this, UserCardActivity.class);
+                    //intent.putExtra("details", details);
+                    //startActivity(intent);
                 }
             });
-        }
+       }
 
     }
 
@@ -78,6 +83,7 @@ public class MainCardActivity extends AppCompatActivity {
                     tempCard.setUserName("Moshe" + i);
                     tempCardList.add(tempCard);
                 }
+
                 return tempCardList;
             }
 
@@ -92,6 +98,10 @@ public class MainCardActivity extends AppCompatActivity {
                 if (cardList.size() != 0) {
                     mainCardAdapter = new MainCardAdapter(cardList, MainCardActivity.this);
                     myListView.setAdapter(mainCardAdapter);
+                }
+
+                else {  //if list is empty (no cards or not internet) - alert dialog (pop up window)
+                    getSupportFragmentManager().beginTransaction().add(new NoInternetFragment(), getString(R.string.INTERNET)).commitAllowingStateLoss();
                 }
             }
         }.execute();
