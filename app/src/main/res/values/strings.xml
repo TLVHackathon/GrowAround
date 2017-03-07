@@ -3,4 +3,5 @@
     <string name="dialog_internet_text">Oops! Something went wrong. Please, check you internet or try later</string>
     <string name="ok">OK</string>
     <string name="INTERNET">internet</string>
+    <string name="permission_denied">Permission Denied</string>
 </resources>

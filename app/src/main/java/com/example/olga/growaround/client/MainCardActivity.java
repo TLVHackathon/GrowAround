@@ -1,7 +1,13 @@
 package com.example.olga.growaround.client;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.LocationManager;
 import android.os.AsyncTask;
+import android.provider.Settings;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -36,11 +42,20 @@ public class MainCardActivity extends AppCompatActivity {
     PropertyCardAdapter propertyCardAdapter;
     ListView myListView;
     ArrayList<Card> cardList = new ArrayList<>();
+    private LocationManager mLocationManager;
+
+    private final static int PERMISSIONS_REQUEST_LOCATION = 999;
+    private final static int GPS_REQUEST = 9999;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card_main);
+
+
+        mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+
 
         myListView = (ListView) findViewById(R.id.cardListView);
 
@@ -52,7 +67,7 @@ public class MainCardActivity extends AppCompatActivity {
         if (myListView != null) {
             myListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
             {
-                
+
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
@@ -108,11 +123,76 @@ public class MainCardActivity extends AppCompatActivity {
     }
 
     public void logInBtnClick(View view) {
+
         //Intent intent = new Intent(MainCardActivity.this, LogIn.class);
         //startActivity(intent);
     }
 
+    public void locationBtnClick(View view) {
 
+        checkLocationPermission();
+
+    }
+
+    public boolean checkLocationPermission() {
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                        PERMISSIONS_REQUEST_LOCATION);
+            } else {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                        PERMISSIONS_REQUEST_LOCATION);
+            }
+            return false;
+
+        } else if (!mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) { // checks if GPS enabled
+            openGpsSettings();
+            return false;
+
+        } else {
+            return true;
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        if (requestCode == PERMISSIONS_REQUEST_LOCATION) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                // If permission approved
+                if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                        == PackageManager.PERMISSION_GRANTED) {
+
+                    //if (mGoogleApiClient == null) {
+                    //    buildGoogleApiClient();
+                    //}
+
+                    if (!mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                        openGpsSettings();
+                    }
+
+                   // mMap.setMyLocationEnabled(true);
+                    /////////////////////////////////////////////
+
+                }
+
+            } else {
+
+                // If permission was denied
+                Toast.makeText(this, R.string.permission_denied, Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+    private void openGpsSettings() {
+        Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+        startActivityForResult(intent, GPS_REQUEST);
+    }
 
 
 
