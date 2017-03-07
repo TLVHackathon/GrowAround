@@ -4,4 +4,6 @@
     <string name="ok">OK</string>
     <string name="INTERNET">internet</string>
     <string name="permission_denied">Permission Denied</string>
+    <string name="no">NO</string>
+    <string name="dialog_register_text">Need a Log In to continue. If you want to registered now?</string>
 </resources>
