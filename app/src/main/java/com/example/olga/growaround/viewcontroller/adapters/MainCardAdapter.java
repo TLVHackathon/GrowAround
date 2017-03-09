@@ -5,12 +5,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.olga.growaround.R;
 import com.example.olga.growaround.manager.model.Card;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by olga on 3/4/17.
@@ -55,11 +57,22 @@ public class MainCardAdapter extends BaseAdapter{
 
         TextView userNameTextView = (TextView) row.findViewById(R.id.userNameTextView);
         TextView locationTextView = (TextView) row.findViewById(R.id.locationDataTextView);
+        LinearLayout vegetablesLinearLayout = (LinearLayout) row.findViewById(R.id.vegetablesLinearView);
+
 
         Card current = (Card) getItem(position);
 
+        List<String> vegList = current.getVegetables();
+
         userNameTextView.setText(current.getUserName());
         locationTextView.setText(current.getLocation());
+        ///vegetablesLinearLayout.set
+
+        //for (int i = 0; i < vegList.size(); i++){
+            //vegetablesLinearLayout.addView(vegList.get(i))
+       // }
+
+
 
      return row;
     }

@@ -19,27 +19,15 @@ import android.widget.Toast;
 import com.example.olga.growaround.R;
 import com.example.olga.growaround.manager.model.Card;
 import com.example.olga.growaround.viewcontroller.adapters.MainCardAdapter;
-import com.example.olga.growaround.viewcontroller.adapters.PropertyCardAdapter;
-import com.example.olga.growaround.viewcontroller.views.NoInternetFragment;
+import com.example.olga.growaround.viewcontroller.views.ForRegisteredDialogFragment;
+import com.example.olga.growaround.viewcontroller.views.NoInternetDialogFragment;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Map;
 
 public class MainCardActivity extends AppCompatActivity {
 
     MainCardAdapter mainCardAdapter;
-    PropertyCardAdapter propertyCardAdapter;
     ListView myListView;
     ArrayList<Card> cardList = new ArrayList<>();
     private LocationManager mLocationManager;
@@ -53,9 +41,7 @@ public class MainCardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card_main);
 
-
         mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-
 
         myListView = (ListView) findViewById(R.id.cardListView);
 
@@ -63,25 +49,37 @@ public class MainCardActivity extends AppCompatActivity {
 
         testData();
 
-
         if (myListView != null) {
             myListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
             {
-
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                    Card details = (Card) mainCardAdapter.getItem(position);
+                    if (checkIfUserRegistered()) {
 
-                    Toast.makeText(getBaseContext(), details.getUserName(), Toast.LENGTH_LONG).show();
+                        Card details = (Card) mainCardAdapter.getItem(position);
 
-                    //Intent intent = new Intent(MainCardActivity.this, UserCardActivity.class);
-                    //intent.putExtra("details", details);
-                    //startActivity(intent);
+                        Toast.makeText(getBaseContext(), details.getUserName(), Toast.LENGTH_LONG).show();
+
+                        //Intent intent = new Intent(MainCardActivity.this, UserCardActivity.class);
+                        //intent.putExtra("details", details);
+                        //startActivity(intent);
+
+                    } else {    //open a Log in activity
+
+                        getSupportFragmentManager().beginTransaction().add(new ForRegisteredDialogFragment(), getString(R.string.INTERNET)).commitAllowingStateLoss();
+                    }
                 }
             });
        }
+    }
 
+    private boolean checkIfUserRegistered() {
+
+        //////////
+
+        return false;
+        //return true;
     }
 
     private void testData() {
@@ -111,16 +109,26 @@ public class MainCardActivity extends AppCompatActivity {
                 cardList = cards;
 
                 if (cardList.size() != 0) {
-                    mainCardAdapter = new MainCardAdapter(cardList, MainCardActivity.this);
-                    myListView.setAdapter(mainCardAdapter);
+                    buildCardList();
+
+                    //mainCardAdapter = new MainCardAdapter(cardList, MainCardActivity.this);
+                    //myListView.setAdapter(mainCardAdapter);
                 }
 
                 else {  //if list is empty (no cards or not internet) - alert dialog (pop up window)
-                    getSupportFragmentManager().beginTransaction().add(new NoInternetFragment(), getString(R.string.INTERNET)).commitAllowingStateLoss();
+                    getSupportFragmentManager().beginTransaction().add(new NoInternetDialogFragment(), getString(R.string.INTERNET)).commitAllowingStateLoss();
                 }
             }
         }.execute();
     }
+
+
+    public void buildCardList(){
+        mainCardAdapter = new MainCardAdapter(cardList, MainCardActivity.this);
+        myListView.setAdapter(mainCardAdapter);
+    }
+
+
 
     public void logInBtnClick(View view) {
 
@@ -155,6 +163,12 @@ public class MainCardActivity extends AppCompatActivity {
             return false;
 
         } else {
+
+            Collections.shuffle(cardList);
+            buildCardList();
+            //mainCardAdapter = new MainCardAdapter(cardList, MainCardActivity.this);
+            //myListView.setAdapter(mainCardAdapter);
+
             return true;
         }
     }
@@ -178,6 +192,11 @@ public class MainCardActivity extends AppCompatActivity {
 
                    // mMap.setMyLocationEnabled(true);
                     /////////////////////////////////////////////
+
+                    Collections.shuffle(cardList);
+                    buildCardList();
+                    //mainCardAdapter = new MainCardAdapter(cardList, MainCardActivity.this);
+                    //myListView.setAdapter(mainCardAdapter);
 
                 }
 
@@ -236,7 +255,7 @@ public class MainCardActivity extends AppCompatActivity {
                     myListView.setAdapter(mainCardAdapter);
                 }
                 else {  //if list is empty (no cards or not internet) - alert dialog (pop up window)
-                    getSupportFragmentManager().beginTransaction().add(new NoInternetFragment(), getString(R.string.INTERNET)).commitAllowingStateLoss();
+                    getSupportFragmentManager().beginTransaction().add(new NoInternetDialogFragment(), getString(R.string.INTERNET)).commitAllowingStateLoss();
                 }
             }
         }.execute();

@@ -8,7 +8,7 @@ import android.support.v4.app.DialogFragment;
 
 import com.example.olga.growaround.R;
 
-public class NoInternetFragment extends DialogFragment {
+public class NoInternetDialogFragment extends DialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
