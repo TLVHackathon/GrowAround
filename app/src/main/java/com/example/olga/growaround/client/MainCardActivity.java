@@ -46,7 +46,7 @@ public class MainCardActivity extends AppCompatActivity {
         myListView = (ListView) findViewById(R.id.cardListView);
 
         //startDownload(); after we have a Firebase user
-
+        checkIfUserRegistered();
         testData();
 
         if (myListView != null) {
@@ -61,9 +61,9 @@ public class MainCardActivity extends AppCompatActivity {
 
                         Toast.makeText(getBaseContext(), details.getUserName(), Toast.LENGTH_LONG).show();
 
-                        //Intent intent = new Intent(MainCardActivity.this, UserCardActivity.class);
-                        //intent.putExtra("details", details);
-                        //startActivity(intent);
+                        Intent intent = new Intent(MainCardActivity.this, UserCardActivity.class);
+                        intent.putExtra("details", details);
+                        startActivity(intent);
 
                     } else {    //open a Log in activity
 
@@ -78,8 +78,7 @@ public class MainCardActivity extends AppCompatActivity {
 
         //////////
 
-        return false;
-        //return true;
+        return true;
     }
 
     private void testData() {
