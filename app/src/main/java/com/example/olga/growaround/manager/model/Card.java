@@ -12,18 +12,20 @@ import java.util.List;
 public class Card implements Parcelable {
 
     String userName;
-    List<Integer> itemsSearch;
-    List<Integer> itemsOffer;
-    List<Integer> itemsGive;
+    int [] itemsSearch;
+    int [] itemsOffer;
+    int [] itemsGive;
     String userDetails;
     String location;
 
 
     public Card() {}
 
-
     protected Card(Parcel in) {
         userName = in.readString();
+        itemsSearch = in.createIntArray();
+        itemsOffer = in.createIntArray();
+        itemsGive = in.createIntArray();
         userDetails = in.readString();
         location = in.readString();
     }
@@ -48,9 +50,13 @@ public class Card implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(userName);
+        dest.writeIntArray(itemsSearch);
+        dest.writeIntArray(itemsOffer);
+        dest.writeIntArray(itemsGive);
         dest.writeString(userDetails);
         dest.writeString(location);
     }
+
 
     public String getUserName() {
         return userName;
@@ -60,27 +66,27 @@ public class Card implements Parcelable {
         this.userName = userName;
     }
 
-    public List<Integer> getItemsSearch() {
+    public int[] getItemsSearch() {
         return itemsSearch;
     }
 
-    public void setItemsSearch(List<Integer> itemsSearch) {
+    public void setItemsSearch(int[] itemsSearch) {
         this.itemsSearch = itemsSearch;
     }
 
-    public List<Integer> getItemsOffer() {
+    public int[] getItemsOffer() {
         return itemsOffer;
     }
 
-    public void setItemsOffer(List<Integer> itemsOffer) {
+    public void setItemsOffer(int[] itemsOffer) {
         this.itemsOffer = itemsOffer;
     }
 
-    public List<Integer> getItemsGive() {
+    public int[] getItemsGive() {
         return itemsGive;
     }
 
-    public void setItemsGive(List<Integer> itemsGive) {
+    public void setItemsGive(int[] itemsGive) {
         this.itemsGive = itemsGive;
     }
 

@@ -82,6 +82,7 @@ public class MainCardActivity extends AppCompatActivity {
     private boolean checkIfUserRegistered() {
 
         //////////
+        
 
         return true;
     }
@@ -99,7 +100,7 @@ public class MainCardActivity extends AppCompatActivity {
                     Card tempCard = new Card();
                     tempCard.setLocation("Tel-Aviv" + i);
                     tempCard.setUserName("Moshe" + i);
-                    
+
 
                     tempCard.setItemsGive(userReceived.get(0));
                     tempCardList.add(tempCard);
