@@ -32,6 +32,10 @@ public class MainCardActivity extends AppCompatActivity {
     ArrayList<Card> cardList = new ArrayList<>();
     private LocationManager mLocationManager;
 
+    Integer[] userReceived = {0, 3, 5};
+
+
+
     private final static int PERMISSIONS_REQUEST_LOCATION = 999;
     private final static int GPS_REQUEST = 9999;
 
@@ -57,12 +61,12 @@ public class MainCardActivity extends AppCompatActivity {
 
                     if (checkIfUserRegistered()) {
 
-                        Card details = (Card) mainCardAdapter.getItem(position);
+                        Card cardIntent = (Card) mainCardAdapter.getItem(position);
 
-                        Toast.makeText(getBaseContext(), details.getUserName(), Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getBaseContext(), cardIntent.getUserName(), Toast.LENGTH_LONG).show();
 
                         Intent intent = new Intent(MainCardActivity.this, UserCardActivity.class);
-                        intent.putExtra("details", details);
+                        intent.putExtra(getString(R.string.card_intent), cardIntent);
                         startActivity(intent);
 
                     } else {    //open a Log in activity

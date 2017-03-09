@@ -36,8 +36,8 @@ public class UserCardActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        if(intent.hasExtra("details")) {
-            Card current = intent.getParcelableExtra("details");
+        if(intent.hasExtra(getString(R.string.card_intent))) {
+            Card current = intent.getParcelableExtra(getString(R.string.card_intent));
 
             TextView username = (TextView)findViewById(R.id.txtUserName);
             username.setText(current.getUserName());
