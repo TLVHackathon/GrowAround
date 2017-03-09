@@ -6,6 +6,7 @@
     <string name="permission_denied">הבקשה נכשלה</string>
     <string name="dialog_register_text">נדרשרשת הרשמה כדי להמשיך. האם ברצונך להרשם?</string>
     <string name="INTERNET">internet</string>
+    <string name="card_intent">cardIntent</string>
 
 
 </resources>
