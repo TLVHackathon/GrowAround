@@ -21,9 +21,7 @@ import java.util.HashMap;
 
 public class UserCardActivity extends AppCompatActivity {
 
-    ListView lstSearching;
     LinearLayout mLinearLayout;
-    MainCardAdapter mCardAdapter;
     Integer[] userReceived = {0, 3, 5};
 
     private HashMap<Integer, Integer> mUserVariablesToVegetables = new HashMap<>();
@@ -44,17 +42,27 @@ public class UserCardActivity extends AppCompatActivity {
             TextView username = (TextView)findViewById(R.id.txtUserName);
             username.setText(current.getUserName());
 
-            mLinearLayout = (LinearLayout)findViewById(R.id.hsvSearching);
+            mLinearLayout = (LinearLayout)findViewById(R.id.lstSearching);
             for (Integer user : userReceived) { //for (User user : userReceived) {
                 ItemImageView item = new ItemImageView(this);
                 //user.getVegetables().get(i);
                 item.setImageResource(mUserVariablesToVegetables.get(user));
                 mLinearLayout.addView(item);
             }
-/**/
-            /*
-            mCardAdapter = new MainCardAdapter(itemsList, UserCardActivity.this);
-*/
+
+            mLinearLayout = (LinearLayout)findViewById(R.id.lstOffering);
+            for (Integer user : userReceived) {
+                ItemImageView item = new ItemImageView(this);
+                item.setImageResource(mUserVariablesToVegetables.get(user));
+                mLinearLayout.addView(item);
+            }
+
+            mLinearLayout = (LinearLayout)findViewById(R.id.lstGiving);
+            for (Integer user : userReceived) {
+                ItemImageView item = new ItemImageView(this);
+                item.setImageResource(mUserVariablesToVegetables.get(user));
+                mLinearLayout.addView(item);
+            }
 
         }else{
             // Error receiving information the user - go back with an error code.
