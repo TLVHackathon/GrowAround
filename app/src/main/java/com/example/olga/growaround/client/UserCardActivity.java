@@ -44,26 +44,29 @@ public class UserCardActivity extends AppCompatActivity {
 
 
             mLinearLayout = (LinearLayout)findViewById(R.id.lstSearching);
-            for (Integer user : current.getItemsSearch()) { //for (User user : userReceived) {
+            for (int itemIndex : current.getItemsSearch()) { //for (User user : userReceived) {
                 ItemImageView item = new ItemImageView(this);
                 //user.getVegetables().get(i);
-                item.setImageResource(itemsMapping.getItem(user));
+                item.setImageResource(itemsMapping.getItem(itemIndex));
                 mLinearLayout.addView(item);
             }
 
             mLinearLayout = (LinearLayout)findViewById(R.id.lstOffering);
-            for (Integer user : current.getItemsOffer()) {
+            for (int itemIndex : current.getItemsSearch()) { //for (User user : userReceived) {
                 ItemImageView item = new ItemImageView(this);
-                item.setImageResource(itemsMapping.getItem(user));
+                //user.getVegetables().get(i);
+                item.setImageResource(itemsMapping.getItem(itemIndex));
                 mLinearLayout.addView(item);
             }
 
             mLinearLayout = (LinearLayout)findViewById(R.id.lstGiving);
-            for (Integer user : current.getItemsGive()) {
+            for (int itemIndex : current.getItemsSearch()) { //for (User user : userReceived) {
                 ItemImageView item = new ItemImageView(this);
-                item.setImageResource(itemsMapping.getItem(user));
+                //user.getVegetables().get(i);
+                item.setImageResource(itemsMapping.getItem(itemIndex));
                 mLinearLayout.addView(item);
             }
+
 
         }else{
             // Error receiving information the user - go back with an error code.
