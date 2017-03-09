@@ -95,12 +95,14 @@ public class MainCardActivity extends AppCompatActivity {
 
                 ArrayList<Card> tempCardList = new ArrayList<>();
 
+
                 for (int i = 0; i < 20; i ++) {
                     Card tempCard = new Card();
                     tempCard.setLocation("Tel-Aviv" + i);
                     tempCard.setUserName("Moshe" + i);
+
+
                     tempCard.setItemsGive(userReceived);
-                    tempCard.setItemsOffer(userReceived);
                     tempCardList.add(tempCard);
                 }
 
