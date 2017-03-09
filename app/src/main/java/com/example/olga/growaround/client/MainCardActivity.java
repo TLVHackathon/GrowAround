@@ -33,7 +33,7 @@ public class MainCardActivity extends AppCompatActivity {
     ArrayList<Card> cardList = new ArrayList<>();
     private LocationManager mLocationManager;
 
-    Integer[] userReceived = {0, 3, 5};
+    int[] userReceived = {0, 1, 2};
 
 
     private final static int PERMISSIONS_REQUEST_LOCATION = 999;
@@ -102,7 +102,7 @@ public class MainCardActivity extends AppCompatActivity {
                     tempCard.setUserName("Moshe" + i);
 
 
-                    tempCard.setItemsGive(userReceived.get(0));
+                    tempCard.setItemsGive(userReceived);
                     tempCardList.add(tempCard);
                 }
 
