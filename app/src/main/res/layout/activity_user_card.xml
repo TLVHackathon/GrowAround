@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:descendantFocusability="blocksDescendants"
     tools:context="com.example.olga.growaround.client.UserCardActivity">
 
     <LinearLayout
@@ -70,12 +71,16 @@
                 android:textSize="16sp"
                 android:gravity="right"
                 android:layout_gravity="right"/>
-            <android.support.v7.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:scrollbars="vertical"
-                android:id="@+id/searching"></android.support.v7.widget.RecyclerView>
 
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/hsvSearching"></LinearLayout>
+            </HorizontalScrollView>
         </LinearLayout>
         <LinearLayout
             android:orientation="vertical"
@@ -91,10 +96,11 @@
                 android:textSize="16sp"
                 android:gravity="right"
                 android:layout_gravity="right"/>
-            <android.support.v7.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:id="@+id/offering"></android.support.v7.widget.RecyclerView>
+
+            <ListView
+                android:id="@+id/lstOffering"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></ListView>
         </LinearLayout>
         <LinearLayout
             android:orientation="vertical"
@@ -110,10 +116,11 @@
                 android:textSize="16sp"
                 android:gravity="right"
                 android:layout_gravity="right"/>
-            <android.support.v7.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:id="@+id/giving"></android.support.v7.widget.RecyclerView>
+
+            <ListView
+                android:id="@+id/lstGiving"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></ListView>
         </LinearLayout>
 
     </LinearLayout>
