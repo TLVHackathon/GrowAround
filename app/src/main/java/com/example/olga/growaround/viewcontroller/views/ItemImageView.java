@@ -41,4 +41,4 @@ public class ItemImageView extends FrameLayout {
         ((ImageView) findViewById(R.id.image_element)).setImageResource(resource);
     }
 
-} 
+}
