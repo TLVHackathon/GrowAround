@@ -103,6 +103,8 @@ public class MainCardActivity extends AppCompatActivity {
 
 
                     tempCard.setItemsGive(userReceived);
+                    tempCard.setItemsOffer(userReceived);
+                    tempCard.setItemsSearch(userReceived);
                     tempCardList.add(tempCard);
                 }
 
