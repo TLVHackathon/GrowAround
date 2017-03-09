@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.HorizontalScrollView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -12,18 +13,28 @@ import android.widget.TextView;
 
 import com.example.olga.growaround.R;
 import com.example.olga.growaround.manager.model.Card;
+import com.example.olga.growaround.manager.model.User;
 import com.example.olga.growaround.viewcontroller.adapters.MainCardAdapter;
+import com.example.olga.growaround.viewcontroller.views.ItemImageView;
+
+import java.util.HashMap;
 
 public class UserCardActivity extends AppCompatActivity {
 
     ListView lstSearching;
-    //LinearLayout mLinearLayout;
-    //MainCardAdapter mCardAdapter;
+    LinearLayout mLinearLayout;
+    MainCardAdapter mCardAdapter;
+    Integer[] userReceived = {0, 3, 5};
 
+    private HashMap<Integer, Integer> mUserVariablesToVegetables = new HashMap<>();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_card);
+
+        mUserVariablesToVegetables.put(0, R.drawable.cherry_tomato);
+        mUserVariablesToVegetables.put(3, R.drawable.hasa);
+        mUserVariablesToVegetables.put(5, R.drawable.nana);
 
         Intent intent = getIntent();
 
@@ -33,13 +44,16 @@ public class UserCardActivity extends AppCompatActivity {
             TextView username = (TextView)findViewById(R.id.txtUserName);
             username.setText(current.getUserName());
 
-/*
-            mCardAdapter = new MainCardAdapter(itemsList, UserCardActivity.this);
-            lstSearching = new ListView(UserCardActivity.this);
-            lstSearching.setAdapter(mCardAdapter);
-
             mLinearLayout = (LinearLayout)findViewById(R.id.hsvSearching);
-            mLinearLayout.addView(lstSearching);
+            for (Integer user : userReceived) { //for (User user : userReceived) {
+                ItemImageView item = new ItemImageView(this);
+                //user.getVegetables().get(i);
+                item.setImageResource(mUserVariablesToVegetables.get(user));
+                mLinearLayout.addView(item);
+            }
+/**/
+            /*
+            mCardAdapter = new MainCardAdapter(itemsList, UserCardActivity.this);
 */
 
         }else{
