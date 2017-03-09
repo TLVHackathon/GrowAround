@@ -72,7 +72,6 @@
                 android:textSize="16sp"
                 android:gravity="right"
                 android:layout_gravity="right"/>
-
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -80,7 +79,7 @@
                     android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:id="@+id/hsvSearching">
+                    android:id="@+id/lstSearching">
                     </LinearLayout>
             </HorizontalScrollView>
         </LinearLayout>
@@ -98,11 +97,16 @@
                 android:textSize="16sp"
                 android:gravity="right"
                 android:layout_gravity="right"/>
-
-            <ListView
-                android:id="@+id/lstOffering"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"></ListView>
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/lstOffering">
+                </LinearLayout>
+            </HorizontalScrollView>
         </LinearLayout>
         <LinearLayout
             android:orientation="vertical"
@@ -119,10 +123,16 @@
                 android:gravity="right"
                 android:layout_gravity="right"/>
 
-            <ListView
-                android:id="@+id/lstGiving"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"></ListView>
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/lstGiving">
+                </LinearLayout>
+            </HorizontalScrollView>
         </LinearLayout>
 
     </LinearLayout>
