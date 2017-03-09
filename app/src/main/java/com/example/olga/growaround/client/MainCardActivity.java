@@ -24,6 +24,7 @@ import com.example.olga.growaround.viewcontroller.views.NoInternetDialogFragment
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 
 public class MainCardActivity extends AppCompatActivity {
 
@@ -35,10 +36,10 @@ public class MainCardActivity extends AppCompatActivity {
     Integer[] userReceived = {0, 3, 5};
 
 
-
     private final static int PERMISSIONS_REQUEST_LOCATION = 999;
     private final static int GPS_REQUEST = 9999;
 
+    private HashMap<Integer, Integer> mUserVariablesToVegetables = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,10 +94,14 @@ public class MainCardActivity extends AppCompatActivity {
 
                 ArrayList<Card> tempCardList = new ArrayList<>();
 
+
                 for (int i = 0; i < 20; i ++) {
                     Card tempCard = new Card();
                     tempCard.setLocation("Tel-Aviv" + i);
                     tempCard.setUserName("Moshe" + i);
+                    
+
+                    tempCard.setItemsGive(userReceived.get(0));
                     tempCardList.add(tempCard);
                 }
 
