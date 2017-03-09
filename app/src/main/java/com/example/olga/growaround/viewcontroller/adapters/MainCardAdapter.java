@@ -62,7 +62,10 @@ public class MainCardAdapter extends BaseAdapter{
 
         Card current = (Card) getItem(position);
 
-        List<String> vegList = current.getVegetables();
+        //List<Integer> itemListG = current.getItemsSearch();
+        //List<Integer> itemListO = current.getItemsSearch();
+
+
 
         userNameTextView.setText(current.getUserName());
         locationTextView.setText(current.getLocation());

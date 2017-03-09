@@ -2,7 +2,6 @@ package com.example.olga.growaround.manager.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.widget.LinearLayout;
 
 import java.util.List;
 
@@ -13,33 +12,43 @@ import java.util.List;
 public class Card implements Parcelable {
 
     String userName;
-    List<String> vegetables;
+    List<Integer> itemsSearch;
+    List<Integer> itemsOffer;
+    List<Integer> itemsGive;
+    String userDetails;
     String location;
 
 
     public Card() {}
 
+
     protected Card(Parcel in) {
         userName = in.readString();
-        vegetables = in.createStringArrayList();
+        userDetails = in.readString();
         location = in.readString();
     }
 
     public static final Creator<Card> CREATOR = new Creator<Card>() {
         @Override
-        public Card createFromParcel(Parcel in) {return new Card(in);}
+        public Card createFromParcel(Parcel in) {
+            return new Card(in);
+        }
 
         @Override
-        public Card[] newArray(int size) {return new Card[size];}
+        public Card[] newArray(int size) {
+            return new Card[size];
+        }
     };
 
     @Override
-    public int describeContents() {return 0;}
+    public int describeContents() {
+        return 0;
+    }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(userName);
-        dest.writeStringList(vegetables);
+        dest.writeString(userDetails);
         dest.writeString(location);
     }
 
@@ -51,15 +60,43 @@ public class Card implements Parcelable {
         this.userName = userName;
     }
 
+    public List<Integer> getItemsSearch() {
+        return itemsSearch;
+    }
+
+    public void setItemsSearch(List<Integer> itemsSearch) {
+        this.itemsSearch = itemsSearch;
+    }
+
+    public List<Integer> getItemsOffer() {
+        return itemsOffer;
+    }
+
+    public void setItemsOffer(List<Integer> itemsOffer) {
+        this.itemsOffer = itemsOffer;
+    }
+
+    public List<Integer> getItemsGive() {
+        return itemsGive;
+    }
+
+    public void setItemsGive(List<Integer> itemsGive) {
+        this.itemsGive = itemsGive;
+    }
+
+    public String getUserDetails() {
+        return userDetails;
+    }
+
+    public void setUserDetails(String userDetails) {
+        this.userDetails = userDetails;
+    }
+
     public String getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {this.location = location;}
-
-    public List<String> getVegetables() {return vegetables;}
-
-    public void setVegetables(List<String> vegetables) {this.vegetables = vegetables;}
-
-
+    public void setLocation(String location) {
+        this.location = location;
+    }
 }
