@@ -270,8 +270,8 @@ public class MainCardActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_login:
-                //Intent intent = new Intent(MainCardActivity.this, LogIn.class);
-                //startActivity(intent);
+                Intent intent = new Intent(MainCardActivity.this, LogInActivity.class);
+                startActivity(intent);
                 return true;
 
             /*
