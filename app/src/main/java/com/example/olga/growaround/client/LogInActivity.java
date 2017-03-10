@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.Window;
 
 import com.example.olga.growaround.R;
+import com.example.olga.growaround.viewcontroller.views.FacebookConnectionDoneDialogFragment;
 
 public class LogInActivity extends AppCompatActivity {
 
@@ -21,8 +22,7 @@ public class LogInActivity extends AppCompatActivity {
 
     public void facebookConnectionBtn(View view) {
         flagUser = 1;
-
-        Intent intent = new Intent(LogInActivity.this, MainCardActivity.class);
+        Intent intent = new Intent(LogInActivity.this, FacebookConnectionDoneDialogFragment.class);
         intent.putExtra("flag", flagUser);
         startActivity(intent);
     }
