@@ -82,7 +82,7 @@ public class MainCardAdapter extends BaseAdapter{
             }
         }
 
-        firstNameTextView.setText(current.getUserName());
+        firstNameTextView.setText(current.getFirstName());
         locationTextView.setText(current.getLocation());
 
      return row;
