@@ -18,13 +18,24 @@ import android.widget.Toast;
 
 import com.example.olga.growaround.R;
 import com.example.olga.growaround.manager.model.Card;
+import com.example.olga.growaround.manager.model.User;
 import com.example.olga.growaround.viewcontroller.adapters.MainCardAdapter;
 import com.example.olga.growaround.viewcontroller.views.ForRegisteredDialogFragment;
 import com.example.olga.growaround.viewcontroller.views.NoInternetDialogFragment;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Map;
 
 public class MainCardActivity extends AppCompatActivity {
 
@@ -52,7 +63,8 @@ public class MainCardActivity extends AppCompatActivity {
 
         //startDownload(); after we have a Firebase user
         checkIfUserRegistered();
-        testData();
+        startDownload();
+        //testData();
 
         if (myListView != null) {
             myListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
@@ -80,52 +92,8 @@ public class MainCardActivity extends AppCompatActivity {
     }
 
     private boolean checkIfUserRegistered() {
-
         //////////
-        
-
         return true;
-    }
-
-    private void testData() {
-        new AsyncTask<Void, Void, ArrayList<Card>>(){
-
-            @Override
-            protected ArrayList<Card> doInBackground(Void... params) {
-
-                ArrayList<Card> tempCardList = new ArrayList<>();
-
-
-                for (int i = 0; i < 20; i ++) {
-                    Card tempCard = new Card();
-                    tempCard.setLocation("Tel-Aviv" + i);
-                    tempCard.setUserName("Moshe" + i);
-                    tempCard.setItemsGive(userReceived);
-                    tempCard.setItemsOffer(userReceived);
-                    tempCard.setItemsSearch(userReceived);
-                    tempCardList.add(tempCard);
-                }
-
-                return tempCardList;
-            }
-
-            @Override
-            protected void onPostExecute(ArrayList<Card> cards) {
-                super.onPostExecute(cards);
-
-                Collections.reverse(cards);   //new card first
-
-                cardList = cards;
-
-                if (cardList.size() != 0) {
-                    buildCardList();
-                }
-
-                else {  //if list is empty (no cards or not internet) - alert dialog (pop up window)
-                    getSupportFragmentManager().beginTransaction().add(new NoInternetDialogFragment(), getString(R.string.INTERNET)).commitAllowingStateLoss();
-                }
-            }
-        }.execute();
     }
 
 
@@ -133,25 +101,17 @@ public class MainCardActivity extends AppCompatActivity {
         mainCardAdapter = new MainCardAdapter(cardList, MainCardActivity.this);
         myListView.setAdapter(mainCardAdapter);
     }
-
-
-
     public void logInBtnClick(View view) {
         //Intent intent = new Intent(MainCardActivity.this, LogIn.class);
         //startActivity(intent);
     }
-
     public void locationBtnClick(View view) {
-
         checkLocationPermission();
-
     }
 
     public boolean checkLocationPermission() {
-
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
-
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
                 ActivityCompat.requestPermissions(this,
                         new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
@@ -162,18 +122,14 @@ public class MainCardActivity extends AppCompatActivity {
                         PERMISSIONS_REQUEST_LOCATION);
             }
             return false;
-
         } else if (!mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) { // checks if GPS enabled
             openGpsSettings();
             return false;
-
         } else {
-
             Collections.shuffle(cardList);
             buildCardList();
             //mainCardAdapter = new MainCardAdapter(cardList, MainCardActivity.this);
             //myListView.setAdapter(mainCardAdapter);
-
             return true;
         }
     }
@@ -219,29 +175,67 @@ public class MainCardActivity extends AppCompatActivity {
     }
 
 
+    private void testData() {
+        new AsyncTask<Void, Void, ArrayList<Card>>(){
+            @Override
+            protected ArrayList<Card> doInBackground(Void... params) {
+                ArrayList<Card> tempCardList = new ArrayList<>();
+                for (int i = 0; i < 20; i ++) {
+                    Card tempCard = new Card();
+                    tempCard.setLocation("Tel-Aviv" + i);
+                    tempCard.setUserName("Moshe" + i);
+                    tempCard.setItemsGive(userReceived);
+                    tempCard.setItemsOffer(userReceived);
+                    tempCard.setItemsSearch(userReceived);
+                    tempCardList.add(tempCard);
+                }
+                return tempCardList;
+            }
+            @Override
+            protected void onPostExecute(ArrayList<Card> cards) {
+                super.onPostExecute(cards);
+                Collections.reverse(cards);   //new card first
+                cardList = cards;
+                if (cardList.size() != 0) {
+                    buildCardList();
+                }
+                else {  //if list is empty (no cards or not internet) - alert dialog (pop up window)
+                    getSupportFragmentManager().beginTransaction().add(new NoInternetDialogFragment(), getString(R.string.INTERNET)).commitAllowingStateLoss();
+                }
+            }
+        }.execute();
+    }
 
-
-    /*
     private void startDownload() {
         new AsyncTask<Void, Void, ArrayList<Card>>(){
             @Override
             protected ArrayList<Card> doInBackground(Void... voids) {
                 HttpURLConnection connection = null;
                 try {
-                    URL url = new URL("https://findyourpet-9ca26.firebaseio.com/ads/lost.json");
+                    URL url = new URL("https://growaround-6dda8.firebaseio.com/users.json");
                     connection = (HttpURLConnection) url.openConnection();
 
                     InputStream inputStream = connection.getInputStream();
                     Reader reader = new InputStreamReader(inputStream, "UTF-8");
 
                     Gson gson = new Gson();
-                    Map<String, Card> cardsList = gson.fromJson(reader, new TypeToken<Map<String, Card>>(){}.getType());
+                    //Map<String, Card> cardsList = gson.fromJson(reader, new TypeToken<Map<String, Card>>(){}.getType());
+
+                    ArrayList<User> cardList = gson.fromJson(reader, new TypeToken<ArrayList<User>>(){}.getType());
+
                     ArrayList<Card> newCard = new ArrayList<>();
-                    for (Map.Entry<String, Card> entry : cardsList.entrySet()) {
-                        newCard.add(entry.getValue());
+                    //for (Map.Entry<String, Card> entry : cardsList.entrySet()) {
+                     //   newCard.add(entry.getValue());
+                    //}
+
+                   for (int i = 0; i < cardList.size(); i++){
+                       newCard.add(cardList.get(i).getCard());
                     }
+
+
                     return newCard;
                 }
+
 
                 catch (MalformedURLException e) {e.printStackTrace();}
                 catch (IOException e) {e.printStackTrace();}
@@ -253,11 +247,12 @@ public class MainCardActivity extends AppCompatActivity {
 
             @Override
             protected void onPostExecute(ArrayList<Card> cards) {
+                super.onPostExecute(cards);
+
                 Collections.reverse(cards);   //new card first
                 cardList = cards;
                 if (cardList.size() != 0) {
-                    mainCardAdapter = new MainCardAdapter(cardList, MainCardActivity.this);
-                    myListView.setAdapter(mainCardAdapter);
+                    buildCardList();
                 }
                 else {  //if list is empty (no cards or not internet) - alert dialog (pop up window)
                     getSupportFragmentManager().beginTransaction().add(new NoInternetDialogFragment(), getString(R.string.INTERNET)).commitAllowingStateLoss();
@@ -265,6 +260,5 @@ public class MainCardActivity extends AppCompatActivity {
             }
         }.execute();
     }
-    */
 
 }
