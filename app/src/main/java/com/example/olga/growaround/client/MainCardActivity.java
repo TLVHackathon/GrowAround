@@ -49,6 +49,7 @@ public class MainCardActivity extends AppCompatActivity {
 
     int[] userReceived = {0, 1, 2};
 
+    int flagUser = 0;
 
     private final static int PERMISSIONS_REQUEST_LOCATION = 999;
     private final static int GPS_REQUEST = 9999;
@@ -58,7 +59,12 @@ public class MainCardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card_main);
 
-        //Typeface myTypeface = Typeface.createFromAsset(getAssets(),"Alef-Bold");
+        Intent intent = getIntent();
+        if(intent.hasExtra("flag")) {
+            flagUser = intent.getIntExtra("flag",0);
+        }
+
+
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
@@ -81,8 +87,6 @@ public class MainCardActivity extends AppCompatActivity {
 
                         Card cardIntent = (Card) mainCardAdapter.getItem(position);
 
-                        //Toast.makeText(getBaseContext(), cardIntent.getUserName(), Toast.LENGTH_LONG).show();
-
                         Intent intent = new Intent(MainCardActivity.this, UserCardActivity.class);
                         intent.putExtra(getString(R.string.card_intent), cardIntent);
                         startActivity(intent);
@@ -97,8 +101,10 @@ public class MainCardActivity extends AppCompatActivity {
     }
 
     private boolean checkIfUserRegistered() {
-        //////////
-        return true;
+        if (flagUser == 1) {
+            return true;
+        }
+        return false;
     }
 
 
@@ -262,8 +268,14 @@ public class MainCardActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_login:
-                Intent intent = new Intent(MainCardActivity.this, LogInActivity.class);
-                startActivity(intent);
+                if (flagUser == 2 ) {
+                    Intent intent = new Intent(MainCardActivity.this, LogInActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    Intent intent = new Intent(MainCardActivity.this, UserProfileActivity.class);
+                    startActivity(intent);
+                }
                 return true;
 
             /*

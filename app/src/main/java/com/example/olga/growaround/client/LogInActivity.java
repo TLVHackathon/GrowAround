@@ -11,7 +11,7 @@ import com.example.olga.growaround.R;
 
 public class LogInActivity extends AppCompatActivity {
 
-    int flagUser;
+    int flagUser = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

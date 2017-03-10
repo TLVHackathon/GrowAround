@@ -9,6 +9,7 @@ import android.support.v4.app.DialogFragment;
 import android.widget.Toast;
 
 import com.example.olga.growaround.R;
+import com.example.olga.growaround.client.LogInActivity;
 
 /**
  * Created by olga on 3/7/17.
@@ -25,9 +26,9 @@ public class ForRegisteredDialogFragment extends DialogFragment {
                     (R.string.ok, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
 
-                        //Intent logInIntent = new Intent(getContext(), LogIn.class);
+                        Intent logInIntent = new Intent(getContext(), LogInActivity.class);
                         //logInIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        //startActivity(logInIntent);
+                        startActivity(logInIntent);
 
                         }
                     }).setNegativeButton
