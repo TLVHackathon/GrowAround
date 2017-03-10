@@ -3,6 +3,7 @@ package com.example.olga.growaround.client;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Typeface;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.provider.Settings;
@@ -10,6 +11,9 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -35,7 +39,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Map;
 
 public class MainCardActivity extends AppCompatActivity {
 
@@ -50,18 +53,20 @@ public class MainCardActivity extends AppCompatActivity {
     private final static int PERMISSIONS_REQUEST_LOCATION = 999;
     private final static int GPS_REQUEST = 9999;
 
-    private HashMap<Integer, Integer> mUserVariablesToVegetables = new HashMap<>();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card_main);
 
+        //Typeface myTypeface = Typeface.createFromAsset(getAssets(),"Alef-Bold");
+
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+
         mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
         myListView = (ListView) findViewById(R.id.cardListView);
 
-        //startDownload(); after we have a Firebase user
         checkIfUserRegistered();
         startDownload();
         //testData();
@@ -100,13 +105,6 @@ public class MainCardActivity extends AppCompatActivity {
     public void buildCardList(){
         mainCardAdapter = new MainCardAdapter(cardList, MainCardActivity.this);
         myListView.setAdapter(mainCardAdapter);
-    }
-    public void logInBtnClick(View view) {
-        //Intent intent = new Intent(MainCardActivity.this, LogIn.class);
-        //startActivity(intent);
-    }
-    public void locationBtnClick(View view) {
-        checkLocationPermission();
     }
 
     public boolean checkLocationPermission() {
@@ -173,7 +171,6 @@ public class MainCardActivity extends AppCompatActivity {
         Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
         startActivityForResult(intent, GPS_REQUEST);
     }
-
 
     private void testData() {
         new AsyncTask<Void, Void, ArrayList<Card>>(){
@@ -252,6 +249,36 @@ public class MainCardActivity extends AppCompatActivity {
                 }
             }
         }.execute();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.toolbar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_login:
+                //Intent intent = new Intent(MainCardActivity.this, LogIn.class);
+                //startActivity(intent);
+                return true;
+
+            /*
+            case R.id.action_location:
+                checkLocationPermission();
+                return true;
+            */
+
+
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+
+        }
     }
 
 }

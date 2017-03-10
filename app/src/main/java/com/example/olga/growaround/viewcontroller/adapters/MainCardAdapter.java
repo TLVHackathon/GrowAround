@@ -1,6 +1,7 @@
 package com.example.olga.growaround.viewcontroller.adapters;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,6 +63,13 @@ public class MainCardAdapter extends BaseAdapter{
 
         TextView userNameTextView = (TextView) row.findViewById(R.id.userNameTextView);
         TextView locationTextView = (TextView) row.findViewById(R.id.locationDataTextView);
+
+        Typeface typeface = Typeface.createFromAsset(context.getAssets(), "fonts/Alef-Regular.ttf");
+        locationTextView.setTypeface(typeface);
+
+        Typeface typeface1 = Typeface.createFromAsset(context.getAssets(), "fonts/Alef-Bold.ttf");
+        userNameTextView.setTypeface(typeface1);
+
         LinearLayout vegetablesLinearLayout = (LinearLayout) row.findViewById(R.id.vegetablesLinearView);
 
 
