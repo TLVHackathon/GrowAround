@@ -11,8 +11,8 @@ public class User implements Parcelable {
 
     String firstName;
     String lastName;
-    String emailAddress;
     int phoneNumber;
+    String emailAddress;
     Card card;
 
 
