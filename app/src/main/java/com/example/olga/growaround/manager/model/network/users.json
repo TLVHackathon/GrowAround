@@ -1,1 +1,5 @@
-[{"username" : "shay1", "fullname" : "shay lavi 1", "details" : "trying to make this app work", "searching" : [0, 4, 6], "offering" : [1, 4, 5], "giving" : [3, 6, 7] }, {"username" : "shay2", "fullname" : "shay lavi 1", "details" : "trying to make this app work", "searching" : [0, 4, 6], "offering" : [1, 4, 5], "giving" : [3, 6, 7] }]
+[
+  {"lastname" : "shay", "email":"asjdas@casc.com", "phone" : "732649328", "card":{"firstname" : "lavi", "username" : "shay1", "details" : "trying to make this app work", "location":"haifa", "searching" : [1, 0, 2], "offering" : [2, 0, 1], "giving" : [0,1,2]}},
+  {"lastname" : "olga", "email":"asjdas@casc.com", "phone" : "732649328", "card":{"firstname" : "lavi", "username" : "dor", "details" : "trying to make this app work", "location":"haifa", "searching" : [0, 2, 2], "offering" : [1, 1, 1], "giving" : [2,0,0]}},
+  {"lastname" : "offer", "email":"asjdas@casc.com", "phone" : "732649328", "card":{"firstname" : "lavi", "username" : "offer", "details" : "trying to make this app work", "location":"haifa", "searching" : [1, 1, 0], "offering" : [1, 2, 2], "giving" : [0,0,2]}}
+]

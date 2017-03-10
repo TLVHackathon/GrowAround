@@ -14,7 +14,7 @@
         android:layout_weight="1">
 
         <Button
-            android:text="Log In"
+            android:text="התחברות"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4"
@@ -22,7 +22,7 @@
             android:onClick="logInBtnClick"/>
 
         <Button
-            android:text="Order By Location"
+            android:text="סדר לפי מיקום"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="6"
@@ -34,12 +34,11 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:descendantFocusability="blocksDescendants"
         android:layout_weight="9">
 
         <ListView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:id="@+id/cardListView"/>
     </LinearLayout>
 

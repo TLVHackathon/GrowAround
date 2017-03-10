@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.olga.growaround.R;
 import com.example.olga.growaround.manager.model.Card;
+import com.example.olga.growaround.viewcontroller.views.ItemImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,29 +56,26 @@ public class MainCardAdapter extends BaseAdapter{
             row = convertView;
         }
 
+        ItemsMapping itemsMapping = new ItemsMapping();
+        Card current = (Card) getItem(position);
+
+
+
         TextView userNameTextView = (TextView) row.findViewById(R.id.userNameTextView);
         TextView locationTextView = (TextView) row.findViewById(R.id.locationDataTextView);
         LinearLayout vegetablesLinearLayout = (LinearLayout) row.findViewById(R.id.vegetablesLinearView);
 
 
-        Card current = (Card) getItem(position);
-
-
-
-        //List<Integer> itemListG = current.getItemsSearch();
-        //List<Integer> itemListO = current.getItemsSearch();
-
-
+        if (vegetablesLinearLayout.getChildCount() == 0) {
+            for (int itemIndex : current.getItemsSearch()) { //for (User user : userReceived) {
+                ItemImageView item = new ItemImageView(context);//user.getVegetables().get(i);
+                item.setImageResource(itemsMapping.getItem(itemIndex));
+                vegetablesLinearLayout.addView(item);
+            }
+        }
 
         userNameTextView.setText(current.getUserName());
         locationTextView.setText(current.getLocation());
-        ///vegetablesLinearLayout.set
-
-        //for (int i = 0; i < vegList.size(); i++){
-            //vegetablesLinearLayout.addView(vegList.get(i))
-       // }
-
-
 
      return row;
     }

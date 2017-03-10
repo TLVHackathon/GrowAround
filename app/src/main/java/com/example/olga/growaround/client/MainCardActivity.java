@@ -100,8 +100,6 @@ public class MainCardActivity extends AppCompatActivity {
                     Card tempCard = new Card();
                     tempCard.setLocation("Tel-Aviv" + i);
                     tempCard.setUserName("Moshe" + i);
-
-
                     tempCard.setItemsGive(userReceived);
                     tempCard.setItemsOffer(userReceived);
                     tempCard.setItemsSearch(userReceived);
@@ -121,9 +119,6 @@ public class MainCardActivity extends AppCompatActivity {
 
                 if (cardList.size() != 0) {
                     buildCardList();
-
-                    //mainCardAdapter = new MainCardAdapter(cardList, MainCardActivity.this);
-                    //myListView.setAdapter(mainCardAdapter);
                 }
 
                 else {  //if list is empty (no cards or not internet) - alert dialog (pop up window)
@@ -142,7 +137,6 @@ public class MainCardActivity extends AppCompatActivity {
 
 
     public void logInBtnClick(View view) {
-
         //Intent intent = new Intent(MainCardActivity.this, LogIn.class);
         //startActivity(intent);
     }

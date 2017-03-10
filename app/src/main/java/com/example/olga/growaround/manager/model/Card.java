@@ -12,22 +12,39 @@ import java.util.List;
 public class Card implements Parcelable {
 
     String userName;
+    String firstName;
     int [] itemsSearch;
     int [] itemsOffer;
     int [] itemsGive;
     String userDetails;
     String location;
 
-
-    public Card() {}
+    public Card(){}
 
     protected Card(Parcel in) {
         userName = in.readString();
+        firstName = in.readString();
         itemsSearch = in.createIntArray();
         itemsOffer = in.createIntArray();
         itemsGive = in.createIntArray();
         userDetails = in.readString();
         location = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(userName);
+        dest.writeString(firstName);
+        dest.writeIntArray(itemsSearch);
+        dest.writeIntArray(itemsOffer);
+        dest.writeIntArray(itemsGive);
+        dest.writeString(userDetails);
+        dest.writeString(location);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public static final Creator<Card> CREATOR = new Creator<Card>() {
@@ -42,28 +59,20 @@ public class Card implements Parcelable {
         }
     };
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(userName);
-        dest.writeIntArray(itemsSearch);
-        dest.writeIntArray(itemsOffer);
-        dest.writeIntArray(itemsGive);
-        dest.writeString(userDetails);
-        dest.writeString(location);
-    }
-
-
     public String getUserName() {
         return userName;
     }
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public int[] getItemsSearch() {

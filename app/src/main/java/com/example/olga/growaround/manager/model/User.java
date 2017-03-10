@@ -9,7 +9,6 @@ import android.os.Parcelable;
 
 public class User implements Parcelable {
 
-    String firstName;
     String lastName;
     String emailAddress;
     int phoneNumber;
@@ -17,7 +16,6 @@ public class User implements Parcelable {
 
 
     protected User(Parcel in) {
-        firstName = in.readString();
         lastName = in.readString();
         emailAddress = in.readString();
         phoneNumber = in.readInt();
@@ -43,7 +41,6 @@ public class User implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(firstName);
         dest.writeString(lastName);
         dest.writeString(emailAddress);
         dest.writeInt(phoneNumber);
