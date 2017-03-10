@@ -2,12 +2,11 @@ package com.example.olga.growaround.viewcontroller.views;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
-import android.support.v4.view.LayoutInflaterCompat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.olga.growaround.R;
 
@@ -18,7 +17,7 @@ import com.example.olga.growaround.R;
 public class ItemImageView extends FrameLayout {
 
 
-    public ItemImageView(Context context) {/**/
+    public ItemImageView(Context context) {
         super(context);
         init(context);
     }
@@ -39,6 +38,10 @@ public class ItemImageView extends FrameLayout {
 
     public void setImageResource(int resource) {
         ((ImageView) findViewById(R.id.image_element)).setImageResource(resource);
+    }
+
+    public void setText(String text){
+        ((TextView) findViewById(R.id.text_element)).setText(text);
     }
 
 }

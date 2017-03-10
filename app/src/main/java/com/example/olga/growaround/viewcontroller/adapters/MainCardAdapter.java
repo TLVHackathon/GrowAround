@@ -13,7 +13,6 @@ import com.example.olga.growaround.manager.model.Card;
 import com.example.olga.growaround.viewcontroller.views.ItemImageView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by olga on 3/4/17.
@@ -69,7 +68,7 @@ public class MainCardAdapter extends BaseAdapter{
         if (vegetablesLinearLayout.getChildCount() == 0) {
             for (int itemIndex : current.getItemsSearch()) { //for (User user : userReceived) {
                 ItemImageView item = new ItemImageView(context);//user.getVegetables().get(i);
-                item.setImageResource(itemsMapping.getItem(itemIndex));
+                item.setImageResource(itemsMapping.getItemsWrapper(itemIndex).getDrawableResource());
                 vegetablesLinearLayout.addView(item);
             }
         }

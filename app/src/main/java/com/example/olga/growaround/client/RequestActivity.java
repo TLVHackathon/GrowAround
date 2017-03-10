@@ -38,7 +38,7 @@ public class RequestActivity extends AppCompatActivity {
             for (int itemIndex : current.getItemsSearch()) { //for (User user : userReceived) {
                 ItemImageView item = new ItemImageView(this);
                 //user.getVegetables().get(i);
-                item.setImageResource(itemsMapping.getItem(itemIndex));
+                item.setImageResource(itemsMapping.getItemsWrapper(itemIndex).getDrawableResource());
                 mLinearLayout.addView(item);
             }
 
@@ -46,7 +46,7 @@ public class RequestActivity extends AppCompatActivity {
             for (int itemIndex : current.getItemsSearch()) { //for (User user : userReceived) {
                 ItemImageView item = new ItemImageView(this);
                 //user.getVegetables().get(i);
-                item.setImageResource(itemsMapping.getItem(itemIndex));
+                item.setImageResource(itemsMapping.getItemsWrapper(itemIndex).getDrawableResource());
                 mLinearLayout.addView(item);
             }
 
@@ -54,7 +54,7 @@ public class RequestActivity extends AppCompatActivity {
             for (int itemIndex : current.getItemsSearch()) { //for (User user : userReceived) {
                 ItemImageView item = new ItemImageView(this);
                 //user.getVegetables().get(i);
-                item.setImageResource(itemsMapping.getItem(itemIndex));
+                item.setImageResource(itemsMapping.getItemsWrapper(itemIndex).getDrawableResource());
                 mLinearLayout.addView(item);
             }
 

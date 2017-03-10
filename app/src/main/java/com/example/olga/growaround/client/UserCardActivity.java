@@ -3,22 +3,21 @@ package com.example.olga.growaround.client;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.HorizontalScrollView;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.olga.growaround.R;
 import com.example.olga.growaround.manager.model.Card;
-import com.example.olga.growaround.manager.model.User;
 import com.example.olga.growaround.viewcontroller.adapters.ItemsMapping;
-import com.example.olga.growaround.viewcontroller.adapters.MainCardAdapter;
 import com.example.olga.growaround.viewcontroller.views.ItemImageView;
 
-import java.util.HashMap;
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class UserCardActivity extends AppCompatActivity {
 
@@ -44,26 +43,26 @@ public class UserCardActivity extends AppCompatActivity {
 
 
             mLinearLayout = (LinearLayout)findViewById(R.id.lstSearching);
-            for (int itemIndex : current.getItemsSearch()) { //for (User user : userReceived) {
+            for (int itemIndex : current.getItemsSearch()) {
                 ItemImageView item = new ItemImageView(this);
-                //user.getVegetables().get(i);
-                item.setImageResource(itemsMapping.getItem(itemIndex));
+                item.setImageResource(itemsMapping.getItemsWrapper(itemIndex).getDrawableResource());
+                item.setText(itemsMapping.getItemsWrapper(itemIndex).getName());
                 mLinearLayout.addView(item);
             }
 
             mLinearLayout = (LinearLayout)findViewById(R.id.lstOffering);
-            for (int itemIndex : current.getItemsSearch()) { //for (User user : userReceived) {
+            for (int itemIndex : current.getItemsSearch()) {
                 ItemImageView item = new ItemImageView(this);
-                //user.getVegetables().get(i);
-                item.setImageResource(itemsMapping.getItem(itemIndex));
+                item.setImageResource(itemsMapping.getItemsWrapper(itemIndex).getDrawableResource());
+                item.setText(itemsMapping.getItemsWrapper(itemIndex).getName());
                 mLinearLayout.addView(item);
             }
 
             mLinearLayout = (LinearLayout)findViewById(R.id.lstGiving);
-            for (int itemIndex : current.getItemsSearch()) { //for (User user : userReceived) {
+            for (int itemIndex : current.getItemsSearch()) {
                 ItemImageView item = new ItemImageView(this);
-                //user.getVegetables().get(i);
-                item.setImageResource(itemsMapping.getItem(itemIndex));
+                item.setImageResource(itemsMapping.getItemsWrapper(itemIndex).getDrawableResource());
+                item.setText(itemsMapping.getItemsWrapper(itemIndex).getName());
                 mLinearLayout.addView(item);
             }
 
@@ -74,4 +73,57 @@ public class UserCardActivity extends AppCompatActivity {
         }
     }
 
+
+
+    public static void postToServer(final String s, final URL url) {
+        new Thread() {
+            @Override
+            public void run() {
+                HttpURLConnection connection = null;
+                try {
+                    //URL url = new URL("https://findyourpet-9ca26.firebaseio.com/ads.json");
+                    HttpURLConnection.setFollowRedirects(false);
+                    connection = (HttpURLConnection) url.openConnection();
+                    connection.setDoOutput(true);
+                    connection.setRequestMethod("POST");
+                    //connection.setRequestProperty("Content-Type", "application/json");
+
+                    connection.setConnectTimeout(5000); //set timeout to 5 seconds
+                    connection.setReadTimeout(5000);
+
+                    OutputStream outputStream = connection.getOutputStream();   //write
+                    outputStream.write(s.getBytes("UTF-8"));
+                    connection.connect();
+
+                    outputStream.close();
+                    InputStream inputStream = new BufferedInputStream(connection.getInputStream());  //read
+
+                    if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                        inputStream = connection.getInputStream();
+                    }
+                    else { inputStream = connection.getErrorStream(); }
+                    try {
+                        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"), 8);
+                        StringBuilder stringBuilder = new StringBuilder();
+                        String line = null;
+                        while ((line = reader.readLine()) != null) { stringBuilder.append(line + "\n"); }
+
+                        inputStream.close();
+                        reader.close();
+
+                        String response = stringBuilder.toString();
+                    }
+                    catch (Exception e) { e.printStackTrace(); }
+                    //return response ;
+                }
+
+                catch (java.net.SocketTimeoutException e) {e.printStackTrace();}
+                catch (java.io.IOException e) {e.printStackTrace();}
+
+                finally {
+                    if(connection!=null) { connection.disconnect();}
+                }
+            }
+        }.start();
+    }
 }
