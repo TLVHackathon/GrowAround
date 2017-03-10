@@ -12,8 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        android:layout_weight="1.5"
-        >
+        android:layout_weight="1.5">
 
         <TextView
             android:paddingTop="3dp"
@@ -80,7 +79,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:id="@+id/lstSearching">
-                    </LinearLayout>
+                </LinearLayout>
             </HorizontalScrollView>
         </LinearLayout>
         <LinearLayout
@@ -144,24 +143,22 @@
         >
 
         <Button
-            android:id="@+id/btnSendRequest"
+            android:id="@+id/btnApprove"
             android:layout_width="0dp"
             android:textSize="16sp"
             android:layout_weight="4"
-            android:text="שלח בקשה"
+            android:text="אשר"
             android:layout_height="wrap_content"
             android:layout_gravity="center"/>
 
-        <TextView
-            android:id="@+id/txtLocation"
+        <Button
+            android:id="@+id/btnReject"
             android:layout_width="0dp"
+            android:textSize="16sp"
+            android:layout_weight="4"
+            android:text="דחה"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="6"
-            android:gravity="center"
-            android:text="מיקום בארץ"
-            android:textDirection="rtl"
-            android:textSize="16sp" />
+            android:layout_gravity="center"/>
     </LinearLayout>
 
 </LinearLayout>

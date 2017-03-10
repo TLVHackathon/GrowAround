@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingRight="16dp"
+    android:paddingLeft="16dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
+    android:descendantFocusability="blocksDescendants"
+    android:layout_gravity="top"
+    android:gravity="top"
+    tools:context="com.example.olga.growaround.client.UserCardActivity">
+
+    <TableLayout android:layout_height="match_parent"
+        android:layout_width="match_parent">
+        <TableRow android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="שם משפחה"
+                android:layout_weight="2"/>
+            <TextView android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="שם פרטי"
+                android:layout_weight="2"/>
+        </TableRow>
+        <TableRow android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <EditText android:layout_height="wrap_content"
+                android:hint="הקלד שם משפחה"
+                android:inputType="text"
+                android:layout_weight="2"/>
+            <EditText android:hint="הקלד את שימך"
+                android:ems="10"
+                android:layout_weight="2"
+                android:layout_height="wrap_content">
+                <requestFocus/>
+            </EditText>
+        </TableRow>
+        <TableRow android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="כתובת מייל"
+                android:layout_weight="2"/>
+            <TextView android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="מספר טלפון"
+                android:layout_weight="2"/>
+        </TableRow>
+        <TableRow android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <EditText android:layout_height="wrap_content"
+                android:hint="הקלד כתובת מייל"
+                android:inputType="text"
+                android:layout_weight="2"/>
+            <EditText android:hint="הקלד טלפון"
+                android:ems="10"
+                android:layout_height="wrap_content"
+                android:layout_weight="2">
+            </EditText>
+        </TableRow>
+        <TableRow android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="מספר טלפון"
+                android:layout_weight="2"/>
+        </TableRow>
+        <TableRow android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <EditText android:hint="הקלד טלפון"
+                android:ems="10"
+                android:layout_height="wrap_content"
+                android:layout_weight="2">
+            </EditText>
+        </TableRow>
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/lstSearching">
+                </LinearLayout>
+            </HorizontalScrollView>
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/lstGiving">
+                </LinearLayout>
+            </HorizontalScrollView>
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/lstOffering">
+                </LinearLayout>
+            </HorizontalScrollView>
+        </LinearLayout>
+    </TableLayout>
+
+</LinearLayout>
