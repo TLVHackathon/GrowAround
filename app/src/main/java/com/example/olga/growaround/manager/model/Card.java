@@ -3,6 +3,8 @@ package com.example.olga.growaround.manager.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 /**
@@ -11,13 +13,28 @@ import java.util.List;
 
 public class Card implements Parcelable {
 
+    @SerializedName("username")
     String userName;
+
+    @SerializedName("firstname")
     String firstName;
+
+    @SerializedName("searching")
     int [] itemsSearch;
+
+    @SerializedName("offering")
     int [] itemsOffer;
+
+    @SerializedName("giving")
     int [] itemsGive;
+
+    @SerializedName("details")
     String userDetails;
+
+    @SerializedName("location")
     String location;
+
+
 
     public Card(){}
 

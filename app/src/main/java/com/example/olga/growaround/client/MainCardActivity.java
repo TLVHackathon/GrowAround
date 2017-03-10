@@ -228,6 +228,7 @@ public class MainCardActivity extends AppCompatActivity {
                      //   newCard.add(entry.getValue());
                     //}
 
+                    
                    for (int i = 0; i < cardList.size(); i++){
                        newCard.add(cardList.get(i).getCard());
                     }

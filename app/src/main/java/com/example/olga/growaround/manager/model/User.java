@@ -3,15 +3,24 @@ package com.example.olga.growaround.manager.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by olga on 3/4/17.
  */
 
 public class User implements Parcelable {
 
+    @SerializedName("lastname")
     String lastName;
+
+    @SerializedName("email")
     String emailAddress;
+
+    @SerializedName("phone")
     int phoneNumber;
+
+    @SerializedName("card")
     Card card;
 
 
@@ -37,6 +46,38 @@ public class User implements Parcelable {
     @Override
     public int describeContents() {
         return 0;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+
+    public int getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Card getCard() {
+        return card;
+    }
+
+    public void setCard(Card card) {
+        this.card = card;
     }
 
     @Override
