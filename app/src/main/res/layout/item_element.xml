@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:gravity="center"
+    android:layout_gravity="center"
     android:orientation="vertical"
-    android:layout_width="112dp"
-    android:layout_height="112dp"
-    android:id="@+id/image_element"
     android:layout_marginRight="48dp"
-    android:contentDescription="image">
-
-</ImageView>
+    android:layout_marginLeft="48dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="112dp"
+        android:layout_height="112dp"
+        android:id="@+id/image_element"
+        android:contentDescription="image">
+    </ImageView>
+    <TextView android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/text_element"/>
+</LinearLayout>

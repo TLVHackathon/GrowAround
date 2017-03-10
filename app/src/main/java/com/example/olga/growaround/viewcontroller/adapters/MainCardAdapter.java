@@ -14,7 +14,6 @@ import com.example.olga.growaround.manager.model.Card;
 import com.example.olga.growaround.viewcontroller.views.ItemImageView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by olga on 3/4/17.
@@ -62,14 +61,14 @@ public class MainCardAdapter extends BaseAdapter{
 
 
 
-        TextView userNameTextView = (TextView) row.findViewById(R.id.userNameTextView);
+        TextView firstNameTextView = (TextView) row.findViewById(R.id.firstNameTextView); //firstNameTextView
         TextView locationTextView = (TextView) row.findViewById(R.id.locationDataTextView);
 
         Typeface typeface = Typeface.createFromAsset(context.getAssets(), "fonts/Alef-Regular.ttf");
         locationTextView.setTypeface(typeface);
 
         Typeface typeface1 = Typeface.createFromAsset(context.getAssets(), "fonts/Alef-Bold.ttf");
-        userNameTextView.setTypeface(typeface1);
+        firstNameTextView.setTypeface(typeface1);
 
         LinearLayout vegetablesLinearLayout = (LinearLayout) row.findViewById(R.id.vegetablesLinearView);
 
@@ -77,12 +76,13 @@ public class MainCardAdapter extends BaseAdapter{
         if (vegetablesLinearLayout.getChildCount() == 0) {
             for (int itemIndex : current.getItemsSearch()) { //for (User user : userReceived) {
                 ItemImageView item = new ItemImageView(context);//user.getVegetables().get(i);
-                item.setImageResource(itemsMapping.getItem(itemIndex));
+                item.setImageResource(itemsMapping.getItemsWrapper(itemIndex).getDrawableResource());
+                item.setText(itemsMapping.getItemsWrapper(itemIndex).getName());
                 vegetablesLinearLayout.addView(item);
             }
         }
 
-        userNameTextView.setText(current.getUserName());
+        firstNameTextView.setText(current.getUserName());
         locationTextView.setText(current.getLocation());
 
      return row;

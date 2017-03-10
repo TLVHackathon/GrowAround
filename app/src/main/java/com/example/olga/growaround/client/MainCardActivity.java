@@ -216,24 +216,16 @@ public class MainCardActivity extends AppCompatActivity {
                     Reader reader = new InputStreamReader(inputStream, "UTF-8");
 
                     Gson gson = new Gson();
-                    //Map<String, Card> cardsList = gson.fromJson(reader, new TypeToken<Map<String, Card>>(){}.getType());
 
                     ArrayList<User> cardList = gson.fromJson(reader, new TypeToken<ArrayList<User>>(){}.getType());
-
                     ArrayList<Card> newCard = new ArrayList<>();
-                    //for (Map.Entry<String, Card> entry : cardsList.entrySet()) {
-                     //   newCard.add(entry.getValue());
-                    //}
 
-                    
                    for (int i = 0; i < cardList.size(); i++){
                        newCard.add(cardList.get(i).getCard());
                     }
 
-
                     return newCard;
                 }
-
 
                 catch (MalformedURLException e) {e.printStackTrace();}
                 catch (IOException e) {e.printStackTrace();}
@@ -290,58 +282,3 @@ public class MainCardActivity extends AppCompatActivity {
     }
 
 }
-
-
-/*
-public static void postToServer(final String s, final URL url) {
-            new Thread() {
-                @Override
-                public void run() {
-                    HttpURLConnection connection = null;
-                    try {
-                        //URL url = new URL("https://findyourpet-9ca26.firebaseio.com/ads.json");
-                        HttpURLConnection.setFollowRedirects(false);    //-------
-                        connection = (HttpURLConnection) url.openConnection();
-                        connection.setDoOutput(true);
-                        connection.setRequestMethod("POST");
-                        //connection.setRequestProperty("Content-Type", "application/json");
-
-                        connection.setConnectTimeout(5000); //set timeout to 5 seconds
-                        connection.setReadTimeout(5000);
-
-                        OutputStream outputStream = connection.getOutputStream();   //write
-                        outputStream.write(s.getBytes("UTF-8"));
-                        connection.connect();
-
-                        outputStream.close();
-                        InputStream inputStream = new BufferedInputStream(connection.getInputStream());  //read
-
-                        if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                            inputStream = connection.getInputStream();
-                        }
-                        else { inputStream = connection.getErrorStream(); }
-                        try {
-                            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"), 8);
-                            StringBuilder stringBuilder = new StringBuilder();
-                            String line = null;
-                            while ((line = reader.readLine()) != null) { stringBuilder.append(line + "\n"); }
-
-                            inputStream.close();
-                            reader.close();
-
-                            String response = stringBuilder.toString();
-                        }
-                        catch (Exception e) { e.printStackTrace(); }
-                        //return response ;
-                    }
-
-                    catch (java.net.SocketTimeoutException e) {e.printStackTrace();}
-                    catch (java.io.IOException e) {e.printStackTrace();}
-
-                    finally {
-                        if(connection!=null) { connection.disconnect();}
-                    }
-                }
-            }.start();
-    }
- */
