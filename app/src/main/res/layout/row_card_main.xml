@@ -8,8 +8,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="wrap_content"
+        android:gravity="top">
 
         <ImageView
             android:layout_height="20dp"
@@ -26,7 +26,7 @@
             android:text="TextView" />
 
         <TextView
-            android:id="@+id/userNameTextView"
+            android:id="@+id/firstNameTextView"
             android:layout_width="match_parent"
             android:layout_gravity="right"
             android:gravity="right"
@@ -39,14 +39,15 @@
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="9">
+        android:layout_height="match_parent"
+        >
 
         <LinearLayout
             android:id="@+id/vegetablesLinearView"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"/>
     </HorizontalScrollView>
 
 </LinearLayout>

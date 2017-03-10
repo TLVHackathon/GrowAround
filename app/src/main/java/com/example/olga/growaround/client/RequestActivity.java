@@ -35,28 +35,29 @@ public class RequestActivity extends AppCompatActivity {
 
 
             mLinearLayout = (LinearLayout)findViewById(R.id.lstSearching);
-            for (int itemIndex : current.getItemsSearch()) { //for (User user : userReceived) {
+            for (int itemIndex : current.getItemsSearch()) {
                 ItemImageView item = new ItemImageView(this);
-                //user.getVegetables().get(i);
                 item.setImageResource(itemsMapping.getItemsWrapper(itemIndex).getDrawableResource());
+                item.setText(itemsMapping.getItemsWrapper(itemIndex).getName());
                 mLinearLayout.addView(item);
             }
 
             mLinearLayout = (LinearLayout)findViewById(R.id.lstOffering);
-            for (int itemIndex : current.getItemsSearch()) { //for (User user : userReceived) {
+            for (int itemIndex : current.getItemsSearch()) {
                 ItemImageView item = new ItemImageView(this);
-                //user.getVegetables().get(i);
                 item.setImageResource(itemsMapping.getItemsWrapper(itemIndex).getDrawableResource());
+                item.setText(itemsMapping.getItemsWrapper(itemIndex).getName());
                 mLinearLayout.addView(item);
             }
 
             mLinearLayout = (LinearLayout)findViewById(R.id.lstGiving);
-            for (int itemIndex : current.getItemsSearch()) { //for (User user : userReceived) {
+            for (int itemIndex : current.getItemsSearch()) {
                 ItemImageView item = new ItemImageView(this);
-                //user.getVegetables().get(i);
                 item.setImageResource(itemsMapping.getItemsWrapper(itemIndex).getDrawableResource());
+                item.setText(itemsMapping.getItemsWrapper(itemIndex).getName());
                 mLinearLayout.addView(item);
             }
+
 
 
         }else{
