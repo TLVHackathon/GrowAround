@@ -38,7 +38,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 
 public class MainCardActivity extends AppCompatActivity {
 
@@ -46,6 +45,8 @@ public class MainCardActivity extends AppCompatActivity {
     ListView myListView;
     ArrayList<Card> cardList = new ArrayList<>();
     private LocationManager mLocationManager;
+
+    Toolbar myToolbar;
 
     int[] userReceived = {0, 1, 2};
 
@@ -63,11 +64,11 @@ public class MainCardActivity extends AppCompatActivity {
         if(intent.hasExtra("flag")) {
             flagUser = intent.getIntExtra("flag",0);
         }
+        //Toolbar
+                myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
 
-
-
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
+
 
         mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
@@ -102,8 +103,13 @@ public class MainCardActivity extends AppCompatActivity {
 
     private boolean checkIfUserRegistered() {
         if (flagUser == 1) {
+            ///myToolbar.setNavigationIcon(R.drawable.ic_user);
             return true;
         }
+        //if (flagUser == 2) {
+            //myToolbar.setNavigationIcon(R.drawable.ic_vpn_key_white_24dp);
+            //return false;
+       // }
         return false;
     }
 
